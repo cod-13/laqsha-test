@@ -1,0 +1,454 @@
+Q. distinguish between having and where clause?
+-> 
+we use having in group by.
+we can use where clause without group by.
+we cannot use having without group by.
+we use where to check specific condition.
+we use where clause with select, update, delete. 
+having caluse is only used with select statment.
+---------------------------------------------------------------------------------------------------------------------
+Q. distinguished between group by clause and order by clause?
+->
+group by groups the repeatative data and filter out unique data .
+we can use having clause after group by.
+we use "order by" keyword to order column in ascending or descending order.
+order by is only limited to change the order of the table based on given cloumn name.
+we cannot use having or where clause after order by.
+we need to use having or where clause first and then we can use order by.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. commit and rollback with example?
+-> 
+Commit: commit allow us to save our process we have made in database.
+RollBack: rollback allow as to undo last process. 
+to use both rollback and commit we need to use `set auto commit = off`.
+
+Example:
+
+MariaDB [ipl]> set autocommit = off;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
++-----+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [ipl]> insert into items values(6,"apple",15);
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
+|   6 | apple  |     15 |
++-----+--------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [ipl]> rollback;
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
++-----+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [ipl]> insert into items values(6,"apple",15);
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
+|   6 | apple  |     15 |
++-----+--------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [ipl]> commit;
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
+|   6 | apple  |     15 |
++-----+--------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [ipl]> rollback;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [ipl]> select * from items;
++-----+--------+--------+
+| iid | iname  | iprice |
++-----+--------+--------+
+|   1 | ac     |   2000 |
+|   2 | ball   |    200 |
+|   3 | cooler |   1000 |
+|   4 | car    |  50000 |
+|   5 | radio  |    500 |
+|   6 | apple  |     15 |
++-----+--------+--------+
+6 rows in set (0.000 sec)
+
+
+
+--------------------------------------------------------------------------------------------------------------------- 
+Q. what is the features of mysql ?
+-> 1.it is a structured query language.
+2. mysql gives table based structured.
+3. mysql is easy to understand because of its table like structure and my sql is easy to learn as well.
+4. mysql work on mariaDB system and its fast and secure.
+5. mysql is opensource.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. why mySQL is more important as compare to another databased language?
+-> 1. mysql gives us large database connection compare to others with the help of mariaDB.
+2. mysql is open source project thats why it have support or developers around the world.
+3. mysql is more secure and fast database language.
+
+
+---------------------------------------------------------------------------------------------------------------------
+Q. how to start mySQL?
+->1. to start mysql we need to install it on our system first.
+2. in our case we will use xampp, xampp provides us mysql gui as well as cmd environment with the help of apache.
+3. after downloading xampp and installing it by clicking next and install xampp is ready to use.
+4. to start mysql we need to hit start on xampp control panel. some time's we get an error specifing that the default `3306` is already in use, 
+to resolve that issue we need to go control panel -> services -> stop mysql service, and hit start again.
+5. after starting mysql u can use it with clicking shell button.
+6. inside shell type command `mysql -u root` to start mysql.
+7. after starting mysql u will get some information about your mysql connection and under mariaDB mysql is running, 
+you get your connection id based on how much default data base ur mysql has the connection number always will be greator than total numbaer of existing dataase and it will be random (in my case it is 8).
+8. now you can start writing mysql code.
+Example :
+- create database : create database fruits;
+- use database : use fruits;
+- create table : create table fruits_prices(fid int, fname varchar(40), fprice(40));
+- insert data into table : insert into fruits_prices values(1,"apple",15);
+- show data : select * from fruits_prices;
+
+---------------------------------------------------------------------------------------------------------------------
+Q. under which database mysql is running?
+-> mariaDB
+
+---------------------------------------------------------------------------------------------------------------------
+Q. who is the owner of mySQL?
+-> oracle
+
+---------------------------------------------------------------------------------------------------------------------
+Q. how to perform curd in mysql?
+-> CURD stands for Create, Update, Read, Delete.
+to perform curd in mysql we start with creating with database.
+to createe data base we use command `create database empDB;`
+anter that we use `use database emp;` to get access of that database.
+and then we start performing curd operations.
+
+1. create : we use it for create database and table.
+Example : create table emp(id int, name varchar(40), sal int);
+
+2. update : we use update to update existing data inside table.
+Example : update table emp set name = "pratik" where id = 2;
+
+3. Read : read means we read our data/table.
+Example : select * from emp;
+
+4. Delete : we use delete command with alter and delete un wanted row or column.
+Example : delete from mi where ino = 12;
+
+---------------------------------------------------------------------------------------------------------------------
+Q. what is the difference between update and alter?
+->
+1. we use update to change existing data.
+2. update is mainly used to make changes inside table.
+3. unlike alter update cannot affect table.
+4. update is limited to make changes within table only.
+5. update cannot add or remove data inside table.
+6. after using update we can undo the process using rollback.
+
+1. alter makes changes on table.
+2. we use alter to make changes table name, table heading name, to delete column, to add column.
+3. like update ulter cannot make change in single cell of the table. 
+4. alter have ability to add or delete column inside table.
+5. after using alter we cannot undo the process using rollback.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. what is difference create and insert ?
+->
+1.we use create to cerate new data bases and tables.
+2.create only able to use to create new database or tables.
+3.to create database we use.
+-create database database_name
+4.to create new table we use.
+-create table table_name(table_heading);
+
+1.we use insert to insert new data into the table.
+2.insert only work's on table.
+3.to insert data into table we use command.
+-insert into items values(6,"apple",15);
+---------------------------------------------------------------------------------------------------------------------
+Q. what is the use of limit with five examples ?
+-> we can get specific data using limet.
+
+Examples :
+main table :
+MariaDB [ipl]> select * from mi;
++-----+------------------+-------------+------+------------------------+------+------+------+------+----------+
+| ino | name             | role        | age  | address                | test | odi  | t20i | ipl  | overseas |
++-----+------------------+-------------+------+------------------------+------+------+------+------+----------+
+|   1 | rohit sharma     | batsman     |   36 | Nagpur Maharashtra     |   49 |  243 |  148 |  243 | no       |
+|   2 | Dewald Brevis    | batsman     |   20 | Johannesburg           |    0 |    0 |    0 |    7 | yes      |
+|   3 | Ramandeep Singh  | batsman     |   26 | Chandigarh             |    0 |    0 |    0 |    5 | no       |
+|   4 | Tilak Varma      | batsman     |   20 | Guntur, Andhra Pradesh |    0 |    0 |    0 |   25 | no       |
+|   5 | Nehal Wadhera    | batsman     |   22 | Ludhiana, Punjab       |    0 |    0 |    0 |   14 | no       |
+|   6 | Suryakumar Yadav | batsman     |   32 | Mumbai, Maharashtra    |    1 |   23 |   48 |  139 | no       |
+|   7 | Tim David        | batsman     |   27 | Singapore              |    0 |    0 |   22 |   25 | yes      |
+|   8 | Shams Mulani     | batsman     |   26 | Raigad, Maharashtra    |    0 |    0 |    0 |    0 | no       |
+|   9 | Cameron Green    | batsman     |   23 | Cameron Green          |   20 |   15 |    8 |   16 | yes      |
+|  10 | Ishan Kishan     | batsman     |   24 | Patna, Bihar           |    0 |   14 |   27 |   81 | no       |
+|  11 | ratan tata       | All rounder |   78 | india                  |    0 |    0 |    0 |    0 | no       |
+|  12 | elon musk        | bowler      |   48 | idk                    |    0 |    0 |    0 |    0 | yes      |
++-----+------------------+-------------+------+------------------------+------+------+------+------+----------+
+
+Example 1:
+MariaDB [ipl]> select * from mi limit 1;
++-----+--------------+---------+------+--------------------+------+------+------+------+----------+
+| ino | name         | role    | age  | address            | test | odi  | t20i | ipl  | overseas |
++-----+--------------+---------+------+--------------------+------+------+------+------+----------+
+|   1 | rohit sharma | batsman |   36 | Nagpur Maharashtra |   49 |  243 |  148 |  243 | no       |
++-----+--------------+---------+------+--------------------+------+------+------+------+----------+
+
+Example 2:
+MariaDB [ipl]> select * from mi limit 1,3;
++-----+-----------------+---------+------+------------------------+------+------+------+------+----------+
+| ino | name            | role    | age  | address                | test | odi  | t20i | ipl  | overseas |
++-----+-----------------+---------+------+------------------------+------+------+------+------+----------+
+|   2 | Dewald Brevis   | batsman |   20 | Johannesburg           |    0 |    0 |    0 |    7 | yes      |
+|   3 | Ramandeep Singh | batsman |   26 | Chandigarh             |    0 |    0 |    0 |    5 | no       |
+|   4 | Tilak Varma     | batsman |   20 | Guntur, Andhra Pradesh |    0 |    0 |    0 |   25 | no       |
++-----+-----------------+---------+------+------------------------+------+------+------+------+----------+
+
+Example 3:
+MariaDB [ipl]> select * from mi order by age desc limit 2;
++-----+------------+-------------+------+---------+------+------+------+------+----------+
+| ino | name       | role        | age  | address | test | odi  | t20i | ipl  | overseas |
++-----+------------+-------------+------+---------+------+------+------+------+----------+
+|  11 | ratan tata | All rounder |   78 | india   |    0 |    0 |    0 |    0 | no       |
+|  12 | elon musk  | bowler      |   48 | idk     |    0 |    0 |    0 |    0 | yes      |
++-----+------------+-------------+------+---------+------+------+------+------+----------+
+
+Example 4:
+MariaDB [ipl]> select * from mi order by age desc limit 2,4;
++-----+------------------+---------+------+---------------------+------+------+------+------+----------+
+| ino | name             | role    | age  | address             | test | odi  | t20i | ipl  | overseas |
++-----+------------------+---------+------+---------------------+------+------+------+------+----------+
+|   1 | rohit sharma     | batsman |   36 | Nagpur Maharashtra  |   49 |  243 |  148 |  243 | no       |
+|   6 | Suryakumar Yadav | batsman |   32 | Mumbai, Maharashtra |    1 |   23 |   48 |  139 | no       |
+|   7 | Tim David        | batsman |   27 | Singapore           |    0 |    0 |   22 |   25 | yes      |
+|   8 | Shams Mulani     | batsman |   26 | Raigad, Maharashtra |    0 |    0 |    0 |    0 | no       |
++-----+------------------+---------+------+---------------------+------+------+------+------+----------+
+
+Example 5:
+MariaDB [ipl]> select * from mi order by age limit 1;
++-----+---------------+---------+------+--------------+------+------+------+------+----------+
+| ino | name          | role    | age  | address      | test | odi  | t20i | ipl  | overseas |
++-----+---------------+---------+------+--------------+------+------+------+------+----------+
+|   2 | Dewald Brevis | batsman |   20 | Johannesburg |    0 |    0 |    0 |    7 | yes      |
++-----+---------------+---------+------+--------------+------+------+------+------+----------+
+
+---------------------------------------------------------------------------------------------------------------------
+Q. how to change column name and table name ?
+-> alter table mumbai rename mi, change pnamee name varchar(40);
+Explanation : above mentioned code changes table name mumbai to mi and column name pnamee to name.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. how many oprators in mysql ?
+-> select, delete, alter, update.
+select : select is used to show data based on selected columns.
+delete : we use delete to delete existing records from the table.
+alter : we use alter to add, delete or midify column's in table.
+update : update is used to change the existing data inside table.
+
+#-> there are three oprators in mysql:
+#1. arithmatic :
+#- in arithmatic operators we have +,-,*,\.
+#2. comparison :
+#- comparison operators we have ==, >=, <=, <, >.
+#3. logical : 
+#- in logical operators we use and, or, not(in mySQL we priotise using word over symbols for logical operators).
+
+---------------------------------------------------------------------------------------------------------------------
+Q. where we use into in mysql ?
+-> we use "into" keyword in insert statement.
+Example : insert into Table_name values();
+
+---------------------------------------------------------------------------------------------------------------------
+Q. where we use on ?
+-> we use "on" keyword in join's mainly  inner join, left join, right join.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. what are the difference betwen all the joins with five examples ?
+-> there are total of five joins present in mysql.
+those are: inner join, left join, right join, cross join, self join.
+1. inner join : inner join gives matching data from both table.
+MariaDB [jointexamples]> select * from orders inner join customers on orders.oid = customers.oid;
++-----+----------+--------+-----+--------+-------+------+
+| oid | oname    | oprice | cid | cname  | cfees | oid  |
++-----+----------+--------+-----+--------+-------+------+
+|   1 | apples   |    100 |   1 | pratik |  1000 |    1 |
+|   2 | balls    |     50 |   2 | manish |  2000 |    2 |
+|   3 | cat      |    500 |   3 | rajesh |  3000 |    3 |
+|   4 | dog      |   5000 |   4 | kapil  |  4000 |    4 |
+|   5 | elephant |  10000 |   5 | lily   |  5000 |    5 |
++-----+----------+--------+-----+--------+-------+------+
+5 rows in set (0.001 sec)
+
+2. left join : left join gives all data from left and only matching data form right.
+MariaDB [jointexamples]> select * from orders left join customers on orders.oid = customers.oid;
++-----+-----------+--------+------+--------+-------+------+
+| oid | oname     | oprice | cid  | cname  | cfees | oid  |
++-----+-----------+--------+------+--------+-------+------+
+|   1 | apples    |    100 |    1 | pratik |  1000 |    1 |
+|   2 | balls     |     50 |    2 | manish |  2000 |    2 |
+|   3 | cat       |    500 |    3 | rajesh |  3000 |    3 |
+|   4 | dog       |   5000 |    4 | kapil  |  4000 |    4 |
+|   5 | elephant  |  10000 |    5 | lily   |  5000 |    5 |
+|   6 | fish      |     20 | NULL | NULL   |  NULL | NULL |
+|   7 | games     |    800 | NULL | NULL   |  NULL | NULL |
+|   8 | horse     |  80000 | NULL | NULL   |  NULL | NULL |
+|   9 | icecreams |     80 | NULL | NULL   |  NULL | NULL |
+|  10 | jacket    |    400 | NULL | NULL   |  NULL | NULL |
++-----+-----------+--------+------+--------+-------+------+
+10 rows in set (0.000 sec)
+
+3. right join : right join gives all data form right and only matching data form left.
+MariaDB [jointexamples]> select * from orders right join customers on orders.oid = customers.oid;
++------+----------+--------+-----+--------+-------+------+
+| oid  | oname    | oprice | cid | cname  | cfees | oid  |
++------+----------+--------+-----+--------+-------+------+
+|    1 | apples   |    100 |   1 | pratik |  1000 |    1 |
+|    2 | balls    |     50 |   2 | manish |  2000 |    2 |
+|    3 | cat      |    500 |   3 | rajesh |  3000 |    3 |
+|    4 | dog      |   5000 |   4 | kapil  |  4000 |    4 |
+|    5 | elephant |  10000 |   5 | lily   |  5000 |    5 |
++------+----------+--------+-----+--------+-------+------+
+5 rows in set (0.000 sec)
+
+4. cross join : cross join gives matching data from both table and we can use where clause in cross join.
+MariaDB [jointexamples]> select * from orders cross join customers where orders.oid = customers.oid;
++-----+----------+--------+-----+--------+-------+------+
+| oid | oname    | oprice | cid | cname  | cfees | oid  |
++-----+----------+--------+-----+--------+-------+------+
+|   1 | apples   |    100 |   1 | pratik |  1000 |    1 |
+|   2 | balls    |     50 |   2 | manish |  2000 |    2 |
+|   3 | cat      |    500 |   3 | rajesh |  3000 |    3 |
+|   4 | dog      |   5000 |   4 | kapil  |  4000 |    4 |
+|   5 | elephant |  10000 |   5 | lily   |  5000 |    5 |
++-----+----------+--------+-----+--------+-------+------+
+5 rows in set (0.000 sec)
+
+5. self join : self join is used to join itself.
+MariaDB [jointexamples]> select * from customers self join customers;
++-----+--------+-------+------+-----+--------+-------+------+
+| cid | cname  | cfees | oid  | cid | cname  | cfees | oid  |
++-----+--------+-------+------+-----+--------+-------+------+
+|   1 | pratik |  1000 |    1 |   1 | pratik |  1000 |    1 |
+|   2 | manish |  2000 |    2 |   1 | pratik |  1000 |    1 |
+|   3 | rajesh |  3000 |    3 |   1 | pratik |  1000 |    1 |
+|   4 | kapil  |  4000 |    4 |   1 | pratik |  1000 |    1 |
+|   5 | lily   |  5000 |    5 |   1 | pratik |  1000 |    1 |
+|   1 | pratik |  1000 |    1 |   2 | manish |  2000 |    2 |
+|   2 | manish |  2000 |    2 |   2 | manish |  2000 |    2 |
+|   3 | rajesh |  3000 |    3 |   2 | manish |  2000 |    2 |
+|   4 | kapil  |  4000 |    4 |   2 | manish |  2000 |    2 |
+|   5 | lily   |  5000 |    5 |   2 | manish |  2000 |    2 |
+|   1 | pratik |  1000 |    1 |   3 | rajesh |  3000 |    3 |
+|   2 | manish |  2000 |    2 |   3 | rajesh |  3000 |    3 |
+|   3 | rajesh |  3000 |    3 |   3 | rajesh |  3000 |    3 |
+|   4 | kapil  |  4000 |    4 |   3 | rajesh |  3000 |    3 |
+|   5 | lily   |  5000 |    5 |   3 | rajesh |  3000 |    3 |
+|   1 | pratik |  1000 |    1 |   4 | kapil  |  4000 |    4 |
+|   2 | manish |  2000 |    2 |   4 | kapil  |  4000 |    4 |
+|   3 | rajesh |  3000 |    3 |   4 | kapil  |  4000 |    4 |
+|   4 | kapil  |  4000 |    4 |   4 | kapil  |  4000 |    4 |
+|   5 | lily   |  5000 |    5 |   4 | kapil  |  4000 |    4 |
+|   1 | pratik |  1000 |    1 |   5 | lily   |  5000 |    5 |
+|   2 | manish |  2000 |    2 |   5 | lily   |  5000 |    5 |
+|   3 | rajesh |  3000 |    3 |   5 | lily   |  5000 |    5 |
+|   4 | kapil  |  4000 |    4 |   5 | lily   |  5000 |    5 |
+|   5 | lily   |  5000 |    5 |   5 | lily   |  5000 |    5 |
++-----+--------+-------+------+-----+--------+-------+------+
+25 rows in set (0.001 sec)
+---------------------------------------------------------------------------------------------------------------------
+Q. diffrence between order by group by and joins ?
+->
+order by
+1. order by used to order data in specified order.
+2. by default order by orders data in ascending order.
+3. order by only affect on single column.
+4. with the help of order we can order data accrodingly our need using columns.
+Example : order using age or date.
+
+group by
+1. like order by group by is also perform only in column.
+2. group by group's repeatative data and shows only unique value.
+3. with the help of count by we can set how much repeatative data are present inside of a single group.
+4. to add more sub querys inside of group by we use having clause.
+
+joins
+1. joins are mostly perform on two tables.
+2. with join's we can get specific data from both table.
+3. join gives us ability to compare two tables.
+4. to use joins we need to have two tables with primary and foreign key.
+5. join connect each other using keys, primary key also called as refrensed table and foreign key also called as refrensing table.
+6. join are depedend on keys.
+
+---------------------------------------------------------------------------------------------------------------------
+Q. what is the diff between union and joins ?
+->
+union
+1. with the help of union we can union two select statement and get one result.
+2. we can use union on same table.
+3. unlike join union gives only one table as result set.
+4. union dose not need to use specific keys to perform union opration on two tables.
+5. union dose not need to have mutual values inside to tables.
+
+
+
+joins
+1. joins are mostly perform on two tables.
+2. with join's we can get specific data from both table.
+3. join gives us ability to compare two tables.
+4. to use joins we need to have two tables with primary and foreign key.
+5. join connect each other using keys, primary key also called as refrensed table and foreign key also called as refrensing table.
+6. join are depedend on keys.
+
+
+
